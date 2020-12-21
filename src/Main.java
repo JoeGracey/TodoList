@@ -4,25 +4,34 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        // To-do List
         // Field to enter items
         // New item button
         // Delete item button
         // Cross off when completed
 
-        // if (types 'add') {
+        // if (0) {
         //      ItemsToDo.addItems();
-        // } else if (types 'delete') {
+        // } else if (1) {
         //      ItemsToDo.deleteItems();
-        // } else if (types 'strike') {
+        // } else if (2) {
         //      ItemsToDo.strikethroughItems();
-        // } else if (types 'print') {
-        //      ItemsToDo.printItems
+        // } else if (3) {
+        //      ItemsToDo.printItems();
+        // } else if (4) {
+        //      ItemsToDo.listItems();
         // }
     }
 
     public static class ItemsToDo {
         ArrayList<String> itemsToBeAdded = new ArrayList<>();
+
+        public static void listMenu() {
+            System.out.println("ToDo List Menu");
+            System.out.println("0 - Add a new item");
+            System.out.println("1 - Delete an item");
+            System.out.println("3 - Cross off an item");
+            System.out.println("4 - List all items");
+        }
 
         public static void addItems() {
             ArrayList<String> itemsInTheList = new ArrayList<>();
@@ -49,6 +58,10 @@ public class Main {
         }
 
         public static void printItems() {
+
+        }
+
+        public static void listItems() {
 
         }
     }
