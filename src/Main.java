@@ -4,22 +4,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        // Field to enter items
-        // New item button
-        // Delete item button
-        // Cross off when completed
-
-        // if (0) {
-        //      ItemsToDo.addItems();
-        // } else if (1) {
-        //      ItemsToDo.deleteItems();
-        // } else if (2) {
-        //      ItemsToDo.strikethroughItems();
-        // } else if (3) {
-        //      ItemsToDo.printItems();
-        // } else if (4) {
-        //      ItemsToDo.listItems();
-        // }
+        ItemsToDo.listMenu();
+        ItemsToDo.listMenuOptions();
     }
 
     public static class ItemsToDo {
@@ -33,21 +19,45 @@ public class Main {
             System.out.println("4 - List all items");
         }
 
+        public static void listMenuOptions() {
+            Scanner scanner = new Scanner(System.in);
+            int menuNumberEntered = scanner.nextInt();
+
+            if (menuNumberEntered == 0) {
+                ItemsToDo.addItems();
+            } else if (menuNumberEntered == 1) {
+                ItemsToDo.deleteItems();
+            } else if (menuNumberEntered == 2) {
+                ItemsToDo.strikethroughItems();
+            } else if (menuNumberEntered == 3) {
+                ItemsToDo.printItems();
+            } else if (menuNumberEntered == 4) {
+                ItemsToDo.listItems();
+            }
+        }
+
         public static void addItems() {
             ArrayList<String> itemsInTheList = new ArrayList<>();
             Scanner scanner = new Scanner(System.in);
 
-            while (true) {
-                System.out.print("Please enter an item: ");
-                itemsInTheList.add(scanner.next());
-                System.out.println(itemsInTheList);
+            System.out.print("Please enter an item: ");
+            itemsInTheList.add(scanner.next().toLowerCase());
+            System.out.println(itemsInTheList);
+            System.out.print("Add another item? Y/N ");
+            char addAnotherItem = scanner.next().charAt(0);
 
-                // User enters add to enter another item
-                // Program should stop after every input
+            if (addAnotherItem == 'y') {
+                addItems();
+            } else if (addAnotherItem == 'n') {
+
+            } else {
+                System.out.print("Please enter 'Y' or 'N'");
+                addItems();
             }
+            // Option to stop adding item
         }
 
-        public void deleteItems() {
+        public static void deleteItems() {
             ArrayList<String> itemsInTheList = new ArrayList<>();
             // Print list of items
             // Enter which item to delete
