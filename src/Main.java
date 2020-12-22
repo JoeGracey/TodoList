@@ -9,14 +9,14 @@ public class Main {
     }
 
     public static class ItemsToDo {
-        ArrayList<String> itemsToBeAdded = new ArrayList<>();
+        //ArrayList<String> itemsToBeAdded = new ArrayList<>();
 
         public static void listMenu() {
             System.out.println("ToDo List Menu");
             System.out.println("0 - Add a new item");
             System.out.println("1 - Delete an item");
-            System.out.println("3 - Cross off an item");
-            System.out.println("4 - List all items");
+            System.out.println("2 - Cross off an item");
+            System.out.println("3 - List all items");
         }
 
         public static void listMenuOptions() {
@@ -30,8 +30,6 @@ public class Main {
             } else if (menuNumberEntered == 2) {
                 ItemsToDo.strikethroughItems();
             } else if (menuNumberEntered == 3) {
-                ItemsToDo.printItems();
-            } else if (menuNumberEntered == 4) {
                 ItemsToDo.listItems();
             }
         }
@@ -49,30 +47,28 @@ public class Main {
             if (addAnotherItem == 'y') {
                 addItems();
             } else if (addAnotherItem == 'n') {
-
+                listMenuOptions();
             } else {
                 System.out.print("Please enter 'Y' or 'N'");
                 addItems();
             }
-            // Option to stop adding item
         }
 
         public static void deleteItems() {
-            ArrayList<String> itemsInTheList = new ArrayList<>();
+            //ArrayList<String> itemsInTheList = new ArrayList<>();
             // Print list of items
             // Enter which item to delete
+            System.out.println("deleteItems");
         }
 
         public static void strikethroughItems() {
-            ArrayList<String> itemsInTheList = new ArrayList<>();
+            //ArrayList<String> itemsInTheList = new ArrayList<>();
+            System.out.println("strikethroughItems");
         }
 
-        public static void printItems() {
-
-        }
 
         public static void listItems() {
-
+            System.out.println("listItems");
         }
     }
 }
