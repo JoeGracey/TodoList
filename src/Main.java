@@ -22,10 +22,8 @@ public class Main {
             } else if (menuNumberEntered == 1) {
                 ItemsToDo.deleteItems();
             } else if (menuNumberEntered == 2) {
-                ItemsToDo.strikethroughItems();
-            } else if (menuNumberEntered == 3) {
                 ItemsToDo.listItems();
-            } else if (menuNumberEntered == 4) {
+            } else if (menuNumberEntered == 3) {
             }
         }
 
@@ -57,10 +55,6 @@ public class Main {
             System.out.println(itemsInTheList);
         }
 
-        public static void strikethroughItems() {
-            System.out.println("strikethroughItems");
-        }
-
 
         public static void listItems() {
             System.out.println(Arrays.toString(itemsInTheList.toArray()));
@@ -70,9 +64,8 @@ public class Main {
             System.out.println("What would you like to-do?");
             System.out.println("Press 0: Add a new item");
             System.out.println("Press 1: Delete an item");
-            System.out.println("Press 2: Cross off an item");
-            System.out.println("Press 3: List all items");
-            System.out.println("Press 4: Quit");
+            System.out.println("Press 2: List all items");
+            System.out.println("Press 3: Quit");
         }
 
         public static void enteringAnItem() {
