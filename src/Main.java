@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -29,7 +26,6 @@ public class Main {
             } else if (menuNumberEntered == 3) {
                 ItemsToDo.listItems();
             } else if (menuNumberEntered == 4) {
-                return;
             }
         }
 
@@ -51,11 +47,14 @@ public class Main {
 
         public static void deleteItems() {
             System.out.println("Enter the item you want to delete: ");
+            itemsInTheList.remove(scanner.next());
+
             while (iterator.hasNext()) {
-                if (iterator.next().equals("laundry")) {
+                if (iterator.next().equals(itemsInTheList)) {
                     iterator.remove();
                 }
             }
+            System.out.println(itemsInTheList);
         }
 
         public static void strikethroughItems() {
