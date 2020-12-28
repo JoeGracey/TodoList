@@ -8,7 +8,6 @@ public class Main {
 
     public static class ItemsToDo {
         static ArrayList<String> itemsInTheList = new ArrayList<>();
-        static Iterator<String> iterator = itemsInTheList.iterator();
         public static Scanner scanner = new Scanner(System.in);
         static int menuNumberEntered;
         static char addAnotherItem;
@@ -24,6 +23,7 @@ public class Main {
             } else if (menuNumberEntered == 2) {
                 ItemsToDo.listItems();
             } else if (menuNumberEntered == 3) {
+                ItemsToDo.indexOf();
             }
         }
 
@@ -45,14 +45,17 @@ public class Main {
 
         public static void deleteItems() {
             System.out.println("Enter the item you want to delete: ");
-            itemsInTheList.remove(scanner.next());
-
-            while (iterator.hasNext()) {
-                if (iterator.next().equals(itemsInTheList)) {
-                    iterator.remove();
-                }
+            boolean doesItContain = itemsInTheList.contains(scanner.next());
+            if (doesItContain) {
+                System.out.println("True");
+                //System.out.println(itemsInTheList.);
+            } else {
+                System.out.println("False");
             }
-            System.out.println(itemsInTheList);
+        }
+
+        public static void indexOf() {
+            System.out.println("Size of list: " + itemsInTheList.size());
         }
 
 
@@ -74,4 +77,6 @@ public class Main {
             System.out.println(itemsInTheList);
         }
     }
+
+
 }
