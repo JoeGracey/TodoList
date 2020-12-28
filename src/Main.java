@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -11,7 +8,6 @@ public class Main {
 
     public static class ItemsToDo {
         static ArrayList<String> itemsInTheList = new ArrayList<>();
-        static Iterator<String> iterator = itemsInTheList.iterator();
         public static Scanner scanner = new Scanner(System.in);
         static int menuNumberEntered;
         static char addAnotherItem;
@@ -25,11 +21,9 @@ public class Main {
             } else if (menuNumberEntered == 1) {
                 ItemsToDo.deleteItems();
             } else if (menuNumberEntered == 2) {
-                ItemsToDo.strikethroughItems();
-            } else if (menuNumberEntered == 3) {
                 ItemsToDo.listItems();
-            } else if (menuNumberEntered == 4) {
-                return;
+            } else if (menuNumberEntered == 3) {
+                ItemsToDo.indexOf();
             }
         }
 
@@ -51,15 +45,17 @@ public class Main {
 
         public static void deleteItems() {
             System.out.println("Enter the item you want to delete: ");
-            while (iterator.hasNext()) {
-                if (iterator.next().equals("laundry")) {
-                    iterator.remove();
-                }
+            boolean doesItContain = itemsInTheList.contains(scanner.next());
+            if (doesItContain) {
+                System.out.println("True");
+                //System.out.println(itemsInTheList.);
+            } else {
+                System.out.println("False");
             }
         }
 
-        public static void strikethroughItems() {
-            System.out.println("strikethroughItems");
+        public static void indexOf() {
+            System.out.println("Size of list: " + itemsInTheList.size());
         }
 
 
@@ -71,9 +67,8 @@ public class Main {
             System.out.println("What would you like to-do?");
             System.out.println("Press 0: Add a new item");
             System.out.println("Press 1: Delete an item");
-            System.out.println("Press 2: Cross off an item");
-            System.out.println("Press 3: List all items");
-            System.out.println("Press 4: Quit");
+            System.out.println("Press 2: List all items");
+            System.out.println("Press 3: Quit");
         }
 
         public static void enteringAnItem() {
@@ -82,4 +77,6 @@ public class Main {
             System.out.println(itemsInTheList);
         }
     }
+
+
 }
