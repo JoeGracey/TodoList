@@ -20,14 +20,20 @@ public class Main {
                 System.out.println();
                 ItemsToDo.addItems();
             } else if (menuNumberEntered == 1) {
+                System.out.println();
                 ItemsToDo.deleteItems();
             } else if (menuNumberEntered == 2) {
                 System.out.println();
                 ItemsToDo.listItems();
             } else if (menuNumberEntered == 3) {
                 System.out.println();
-                ItemsToDo.indexOf();
+                ItemsToDo.exitApp();
             }
+        }
+
+        public static String itemName() {
+            Scanner scanner = new Scanner(System.in);
+            return scanner.nextLine();
         }
 
         public static void addItems() {
@@ -50,21 +56,17 @@ public class Main {
 
         public static void deleteItems() {
             System.out.println("Enter the item you want to delete: ");
-            boolean doesItContain = itemsInTheList.contains(scanner.next());
-            if (doesItContain) {
-                System.out.println("True");
-            } else {
-                System.out.println("False");
-            }
+            itemsInTheList.remove(ItemsToDo.itemName());
+            System.out.println("To-do List: " + Arrays.toString(itemsInTheList.toArray()));
         }
 
-        public static void indexOf() {
-            System.out.println("Size of list: " + itemsInTheList.size());
+        public static void exitApp() {
+
         }
 
 
         public static void listItems() {
-            System.out.println("Here is your list so far: " + Arrays.toString(itemsInTheList.toArray()));
+            System.out.println("To-do List: " + Arrays.toString(itemsInTheList.toArray()));
             System.out.println();
             listingMenuOptions();
         }
@@ -81,7 +83,8 @@ public class Main {
 
         public static void enteringAnItem() {
             System.out.println("Please enter an item: ");
-            itemsInTheList.add(scanner.next());
+            String itemName = ItemsToDo.itemName();
+            itemsInTheList.add(itemName);
             System.out.println("To-do List: " + itemsInTheList);
             System.out.println();
         }
