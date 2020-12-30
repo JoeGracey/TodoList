@@ -13,29 +13,40 @@ public class Main {
         static char addAnotherItem;
 
         public static void listingMenuOptions() {
-            menuItems();
+            mainMenu();
             menuNumberEntered = scanner.nextInt();
 
             if (menuNumberEntered == 0) {
+                System.out.println();
                 ItemsToDo.addItems();
             } else if (menuNumberEntered == 1) {
+                System.out.println();
                 ItemsToDo.deleteItems();
             } else if (menuNumberEntered == 2) {
+                System.out.println();
                 ItemsToDo.listItems();
             } else if (menuNumberEntered == 3) {
-                ItemsToDo.indexOf();
+                System.out.println();
+                ItemsToDo.exitApp();
             }
+        }
+
+        public static String itemName() {
+            Scanner scanner = new Scanner(System.in);
+            return scanner.nextLine();
         }
 
         public static void addItems() {
             enteringAnItem();
 
-            System.out.print("Add another item? Y/N ");
+            System.out.println("Add another item? Y/N ");
             addAnotherItem = scanner.next().toLowerCase().charAt(0);
 
             if (addAnotherItem == 'y') {
+                System.out.println();
                 addItems();
             } else if (addAnotherItem == 'n') {
+                System.out.println();
                 listingMenuOptions();
             } else {
                 System.out.println("Please enter 'Y' or 'N'");
@@ -45,36 +56,37 @@ public class Main {
 
         public static void deleteItems() {
             System.out.println("Enter the item you want to delete: ");
-            boolean doesItContain = itemsInTheList.contains(scanner.next());
-            if (doesItContain) {
-                System.out.println("True");
-                //System.out.println(itemsInTheList.);
-            } else {
-                System.out.println("False");
-            }
+            itemsInTheList.remove(ItemsToDo.itemName());
+            System.out.println("To-do List: " + Arrays.toString(itemsInTheList.toArray()));
         }
 
-        public static void indexOf() {
-            System.out.println("Size of list: " + itemsInTheList.size());
+        public static void exitApp() {
+
         }
 
 
         public static void listItems() {
-            System.out.println(Arrays.toString(itemsInTheList.toArray()));
+            System.out.println("To-do List: " + Arrays.toString(itemsInTheList.toArray()));
+            System.out.println();
+            listingMenuOptions();
         }
 
-        public static void menuItems() {
-            System.out.println("What would you like to-do?");
-            System.out.println("Press 0: Add a new item");
-            System.out.println("Press 1: Delete an item");
-            System.out.println("Press 2: List all items");
-            System.out.println("Press 3: Quit");
+        public static void mainMenu() {
+            System.out.println("MAIN MENU");
+            System.out.println("-------------------------");
+            System.out.println("Press 0 to Add a new item");
+            System.out.println("Press 1 to Delete an item");
+            System.out.println("Press 2 to List all items");
+            System.out.println("Press 3 to Quit");
+            System.out.println("-------------------------");
         }
 
         public static void enteringAnItem() {
             System.out.println("Please enter an item: ");
-            itemsInTheList.add(scanner.next());
-            System.out.println(itemsInTheList);
+            String itemName = ItemsToDo.itemName();
+            itemsInTheList.add(itemName);
+            System.out.println("To-do List: " + itemsInTheList);
+            System.out.println();
         }
     }
 
