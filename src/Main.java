@@ -1,94 +1,94 @@
 import java.util.*;
 
 public class Main {
+    static ArrayList<String> itemsInTheList = new ArrayList<>();
+    public static Scanner scanner = new Scanner(System.in);
+    static int menuNumberEntered;
+    static char addAgain;
 
     public static void main(String[] args) {
-        ItemsToDo.listingMenuOptions();
+        displayMenu(); // display options 0 - 3
+        getNumberInput(); // directing users number choice
+        addItemToList(); // user enters item in to-do list
+        enterAnotherItem(); // ask user if they want to enter another item
+        addAnotherItem(); // directing users 'y' or 'n' choice
     }
 
-    public static class ItemsToDo {
-        static ArrayList<String> itemsInTheList = new ArrayList<>();
-        public static Scanner scanner = new Scanner(System.in);
-        static int menuNumberEntered;
-        static char addAnotherItem;
+    public static void displayMenu() {
+        System.out.println("MAIN MENU");
+        System.out.println("-------------------------");
+        System.out.println("Press 0 to Add a new item");
+        System.out.println("Press 1 to Delete an item");
+        System.out.println("Press 2 to List all items");
+        System.out.println("Press 3 to Exit");
+        System.out.println("-------------------------");
+    }
 
-        public static void listingMenuOptions() {
-            mainMenu();
-            menuNumberEntered = scanner.nextInt();
-
-            if (menuNumberEntered == 0) {
-                System.out.println();
-                ItemsToDo.addItems();
-            } else if (menuNumberEntered == 1) {
-                System.out.println();
-                ItemsToDo.deleteItems();
-            } else if (menuNumberEntered == 2) {
-                System.out.println();
-                ItemsToDo.listItems();
-            } else if (menuNumberEntered == 3) {
-                System.out.println();
-                ItemsToDo.exitApp();
-            }
+    public static void getNumberInput() {
+        menuNumberEntered = scanner.nextInt();
+        switch (menuNumberEntered) {
+            case 0:
+            case 1:
+                enterAnItem(); // addItem() and deleteItem()
+                break;
+            case 2:
+                listItems();
+                break;
+            case 3:
+                exitApp();
+                break;
+            default:
+                System.out.println("Please select 0, 1, 2 or 3");
         }
+    }
 
-        public static String itemName() {
-            Scanner scanner = new Scanner(System.in);
-            return scanner.nextLine();
-        }
+    public static void enterAnItem() { // runs after 0 or 1 are pressed
+        System.out.println("Please enter an item: ");
+    }
 
-        public static void addItems() {
-            enteringAnItem();
+    public static void addItemToList() {
+        String itemName = itemName();
+        itemsInTheList.add(itemName);
+        System.out.println("To-do List: " + itemsInTheList);
+    }
 
-            System.out.println("Add another item? Y/N ");
-            addAnotherItem = scanner.next().toLowerCase().charAt(0);
+    public static String itemName() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
 
-            if (addAnotherItem == 'y') {
-                System.out.println();
-                addItems();
-            } else if (addAnotherItem == 'n') {
-                System.out.println();
-                listingMenuOptions();
-            } else {
+    public static void addAnotherItem() {
+        addAgain = scanner.next().toLowerCase().charAt(0);
+        switch (addAgain) {
+            case 'y':
+                addItemToList();
+                break;
+            case 'n':
+                displayMenu();
+                break;
+            default:
                 System.out.println("Please enter 'Y' or 'N'");
-                addItems();
-            }
-        }
-
-        public static void deleteItems() {
-            System.out.println("Enter the item you want to delete: ");
-            itemsInTheList.remove(ItemsToDo.itemName());
-            System.out.println("To-do List: " + Arrays.toString(itemsInTheList.toArray()));
-        }
-
-        public static void exitApp() {
-
-        }
-
-
-        public static void listItems() {
-            System.out.println("To-do List: " + Arrays.toString(itemsInTheList.toArray()));
-            System.out.println();
-            listingMenuOptions();
-        }
-
-        public static void mainMenu() {
-            System.out.println("MAIN MENU");
-            System.out.println("-------------------------");
-            System.out.println("Press 0 to Add a new item");
-            System.out.println("Press 1 to Delete an item");
-            System.out.println("Press 2 to List all items");
-            System.out.println("Press 3 to Quit");
-            System.out.println("-------------------------");
-        }
-
-        public static void enteringAnItem() {
-            System.out.println("Please enter an item: ");
-            String itemName = ItemsToDo.itemName();
-            itemsInTheList.add(itemName);
-            System.out.println("To-do List: " + itemsInTheList);
-            System.out.println();
+                enterAnotherItem();
+                break;
         }
     }
 
+    public static void deleteItems() {
+        enterAnItem();
+        itemsInTheList.remove(itemName());
+        System.out.println("To-do List: " + Arrays.toString(itemsInTheList.toArray()));
+    }
 
+    public static void enterAnotherItem() {
+        System.out.println("Add another item? 'Y' or 'N'");
+    }
+
+    public static void listItems() {
+        System.out.println("To-do List: " + Arrays.toString(itemsInTheList.toArray()));
+        System.out.println();
+    }
+
+    public static void exitApp() {
+        return;
+    }
 }
